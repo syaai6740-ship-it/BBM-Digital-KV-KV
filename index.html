@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f6">
+  <title>Misi Mimi: Dunia Suku Kata KV+KV</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-decor decor-one" aria-hidden="true">☁️</div>
+  <div class="sky-decor decor-two" aria-hidden="true">☁️</div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Misi Mimi halaman utama">
+      <span class="brand-bunny" aria-hidden="true">🐰</span>
+      <span><strong>Misi Mimi</strong><small>Dunia Suku Kata</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button" id="soundToggle" type="button" aria-pressed="true" title="Hidupkan atau senyapkan suara">🔊 <span id="soundLabel">Suara</span></button>
+      <button class="icon-button" id="resetButton" type="button" title="Mula semula permainan">↻ <span>Mula semula</span></button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">🌈 SELAMAT DATANG, WIRA KATA!</p>
+        <h1>Jom bermain<br><span>bersama Mimi!</span></h1>
+        <p class="hero-intro">Dengar, cantum dan baca perkataan KV + KV. Satu misi kecil, satu langkah hebat!</p>
+        <div class="hero-buttons">
+          <button class="primary-button" id="startButton" type="button">Mula bermain <span>→</span></button>
+          <button class="soft-button" id="howButton" type="button">Cara bermain</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Ilustrasi arnab comel dan pelangi">
+        <div class="sun">☀️</div>
+        <div class="rainbow" aria-hidden="true"><div></div><div></div><div></div></div>
+        <div class="cloud cloud-left">☁️</div>
+        <div class="bunny" aria-hidden="true">
+          <div class="ear ear-left"></div><div class="ear ear-right"></div>
+          <div class="bunny-head"><span class="eye eye-left"></span><span class="eye eye-right"></span><span class="cheek cheek-left"></span><span class="cheek cheek-right"></span><span class="nose"></span><span class="mouth"></span><span class="bow">🎀</span></div>
+          <div class="bunny-body"></div>
+          <div class="paw paw-left"></div><div class="paw paw-right"></div>
+        </div>
+        <div class="flower flower-one">🌼</div><div class="flower flower-two">🌷</div>
+        <div class="hill"></div>
+      </div>
+    </section>
+
+    <section class="progress-row" aria-label="Kemajuan permainan">
+      <div class="progress-card panel">
+        <div class="progress-heading"><span>⭐ Kemajuan kamu</span><strong id="progressText">0 daripada 3 misi</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div class="score-card panel"><span class="score-star">🏆</span><div><small>Jumlah bintang</small><strong id="totalStars">0</strong></div></div>
+    </section>
+
+    <section class="missions-section" id="missions">
+      <div class="section-heading"><div><p class="eyebrow">PETA PENGEMBARAAN</p><h2>Pilih misi kamu</h2></div><span class="tiny-note">Kamu pasti boleh! 💗</span></div>
+      <div class="mission-grid">
+        <button class="mission-card mission-pink" data-mission="listen" type="button">
+          <span class="mission-number">MISI 1</span><span class="mission-emoji">🎧</span><strong>Dengar dan Sebut</strong><span class="mission-desc">Dengar perkataan, kemudian sebut dengan kuat.</span><span class="mission-bottom"><span class="pill">Kemahiran lisan</span><span class="mission-arrow">→</span></span><span class="mission-status" id="status-listen">Belum bermula</span>
+        </button>
+        <button class="mission-card mission-blue" data-mission="build" type="button">
+          <span class="mission-number">MISI 2</span><span class="mission-emoji">🧩</span><strong>Cantum dan Baca</strong><span class="mission-desc">Cantum dua suku kata menjadi satu perkataan.</span><span class="mission-bottom"><span class="pill">Kemahiran membaca</span><span class="mission-arrow">→</span></span><span class="mission-status" id="status-build">Belum bermula</span>
+        </button>
+        <button class="mission-card mission-mint" data-mission="understand" type="button">
+          <span class="mission-number">MISI 3</span><span class="mission-emoji">💡</span><strong>Faham dan Pilih</strong><span class="mission-desc">Baca perkataan dan pilih gambar yang betul.</span><span class="mission-bottom"><span class="pill">Kefahaman</span><span class="mission-arrow">→</span></span><span class="mission-status" id="status-understand">Belum bermula</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="game-panel panel hidden" id="gamePanel" aria-live="polite">
+      <div class="game-topline"><button class="back-button" id="backButton" type="button">← Peta misi</button><span class="game-mission-tag" id="gameMissionTag">MISI 1</span><span class="question-counter" id="questionCounter">1 / 8</span></div>
+      <div class="game-heading"><p class="eyebrow" id="gameEyebrow">MISI 1</p><h2 id="gameTitle">Dengar dan Sebut</h2><p id="gameInstruction">Dengar perkataan, kemudian sebut dengan kuat.</p></div>
+      <div id="gameContent" class="game-content"></div>
+      <div class="feedback" id="feedback" role="status"></div>
+      <div class="game-footer"><button class="soft-button" id="repeatButton" type="button">🔊 Dengar sekali lagi</button><button class="primary-button" id="checkButton" type="button">Semak jawapan <span>✓</span></button></div>
+    </section>
+
+    <section class="results-panel panel hidden" id="resultsPanel" aria-live="polite">
+      <div class="result-art">🎉🐰🌈</div><p class="eyebrow">MISI SELESAI</p><h2>Hebatnya kamu!</h2><p id="resultMessage">Kamu sudah mencuba dengan bersungguh-sungguh.</p>
+      <div class="result-stats"><div><strong id="resultCorrect">0</strong><span>Jawapan betul</span></div><div><strong id="resultAttempts">0</strong><span>Cubaan</span></div><div><strong id="resultPercent">0%</strong><span>Ketepatan</span></div></div>
+      <button class="primary-button" id="continueButton" type="button">Kembali ke peta <span>→</span></button>
+    </section>
+
+    <section class="teacher-note panel">
+      <span class="note-icon">👩🏻‍🏫</span><div><strong>Nota untuk cikgu</strong><p>Versi asas ini menggunakan suara sintesis pelayar jika tersedia. Untuk menggunakan suara cikgu sendiri, rakam audio dan gantikan fungsi audio dalam <code>script.js</code> dengan fail rakaman dalam folder <code>assets/audio</code>. Rakaman murid tidak dimuat naik atau disimpan oleh permainan ini.</p></div>
+    </section>
+
+    <footer><span>🌸 Misi Mimi · BBM Digital KV+KV</span><span>Dibina untuk belajar dengan gembira</span></footer>
+  </main>
+
+  <dialog id="howDialog" class="how-dialog">
+    <button class="dialog-close" id="closeHow" aria-label="Tutup" type="button">×</button>
+    <p class="eyebrow">CARA BERMAIN</p><h2>Tiga misi, satu pengembaraan!</h2>
+    <ol><li><strong>Dengar dan Sebut:</strong> tekan butang dengar. Sebut perkataan dengan kuat. Tandakan apabila sudah mencuba.</li><li><strong>Cantum dan Baca:</strong> pilih suku kata pertama dan kedua untuk membentuk perkataan.</li><li><strong>Faham dan Pilih:</strong> baca perkataan dan pilih gambar yang sepadan.</li></ol>
+    <p class="dialog-tip">💗 Tidak mengapa jika tersilap. Cuba lagi dan belajar sedikit demi sedikit!</p>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
